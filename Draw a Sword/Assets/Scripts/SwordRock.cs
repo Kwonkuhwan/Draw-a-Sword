@@ -7,10 +7,12 @@ using UnityEngine.EventSystems;
 public class SwordRock : MonoBehaviour
 {
     private Animator swordAnim;
+    private AudioSource swordSource;
 
     private void Awake()
     {
         swordAnim = GetComponentInChildren<Animator>();
+        swordSource = GetComponent<AudioSource>();
     }
 
     public void OnAnimStart()
@@ -18,6 +20,7 @@ public class SwordRock : MonoBehaviour
         if (swordAnim != null)
         {
             swordAnim.SetTrigger("RockClick");
+            swordSource.Play();
         }
     }
 }

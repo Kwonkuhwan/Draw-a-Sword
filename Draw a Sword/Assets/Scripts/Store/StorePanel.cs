@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StorePanel : MonoBehaviour
 {
@@ -11,13 +13,13 @@ public class StorePanel : MonoBehaviour
         get => isShow;
     }
 
-    private void Awake()
+    virtual protected void Awake()
     {
         anim = GetComponent<Animator>();
         isShow = false;
     }
 
-    public void Hide()
+    virtual public void Hide()
     {
         if (anim == null) return;
 
@@ -25,7 +27,7 @@ public class StorePanel : MonoBehaviour
         isShow = false;
     }
 
-    public void Show()
+    virtual public void Show()
     {
         if (anim == null) return;
 
