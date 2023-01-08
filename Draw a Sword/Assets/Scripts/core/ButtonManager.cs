@@ -77,30 +77,36 @@ public class ButtonManager : Singleton<ButtonManager>
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (GameManager.Inst.isCSShow)
+            if (GameManager.Inst.isCSShow || GameManager.Inst.isPSShow)
             {
-                cSPanel.Hide();
-                GameManager.Inst.isCSShow = false;
-            }
 
-            if (GameManager.Inst.isPSShow)
-            {
-                plantPanel.Hide();
-                GameManager.Inst.isPSShow = false;
-            }
+                if (GameManager.Inst.isCSShow)
+                {
+                    cSPanel.Hide();
+                    GameManager.Inst.isCSShow = false;
+                }
 
-            if (GameManager.Inst.isOpShow)
-            {
-                opObj.SetActive(false);
-                GameManager.Inst.isOpShow = false;
-                Time.timeScale = 1;
-
+                if (GameManager.Inst.isPSShow)
+                {
+                    plantPanel.Hide();
+                    GameManager.Inst.isPSShow = false;
+                }
             }
             else
             {
-                opObj.SetActive(true);
-                GameManager.Inst.isOpShow = true;
-                Time.timeScale = 0;
+                if (GameManager.Inst.isOpShow)
+                {
+                    opObj.SetActive(false);
+                    GameManager.Inst.isOpShow = false;
+                    Time.timeScale = 1;
+
+                }
+                else
+                {
+                    opObj.SetActive(true);
+                    GameManager.Inst.isOpShow = true;
+                    Time.timeScale = 0;
+                }
             }
         }
     }
